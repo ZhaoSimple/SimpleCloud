@@ -13,5 +13,20 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6651/eureka   # 注册中心实例地址 单机
+
+  instance:
+    instance-id: simple-core-ip-port
+    prefer-ip-address: true   # 是否显示访问路径的ip地址
+
+# Spring Boot 2.50对 actuator 监控屏蔽了大多数的节点，只暴露了 heath 节点，本段配置（*）就是为了开启所有的节点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # * 在yaml 文件属于关键字，所以需要加引号
 
 
